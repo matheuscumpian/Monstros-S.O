@@ -8,25 +8,30 @@ void* rotaciona(void* arg)
 	
 }
 
-typedef struct arg
+struct arg
 {
 	double **matriz;
 	int linhas;
 	int colunas;
-} t_arg;
+};
 
 int main (int argc, char* argv[]){
 
 	FILE* fptr; //Arquivo de Entrada
-	FILE* rot; //Arquivo de Sa�da
+	FILE* rot; //Arquivo de Saída
 	int linha = atoi(argv[1]); //numero de linhas
 	int coluna = atoi(argv[2]); //numero de colunas
 	int num_threads = atoi(argv[3]); //numero de threads
 	rot=fopen(argv[5],"w"); //arq1 recebe o nome do arquivo .root que vai ser criado
 	fptr=fopen(argv[4],"r"); //arq1 recebe o nome do arquivo .dat que vai ser lido
 	int num;
-	double mat[linha][coluna];
+	struct arg t_arg;
 	
+	double **mat = (double **)malloc(linha * sizeof(double *)); 
+   	for (int i=0; i<coluna; i++) 
+         	mat[i] = (double *)malloc(coluna * sizeof(double)); 
+	
+	t_arg.matriz = mat;
 
 	printf("I = %d J = %d T = %d\n", linha,coluna,num_threads);
 
@@ -37,7 +42,7 @@ int main (int argc, char* argv[]){
 	pthread_t tids[num_threads];
 	for (int i = 0; i < num_threads; i++)
 	{
-		pthread_create(&tids[i], NULL, rotaciona, &t_arg, NULL);
+		pthread_create(&tids[i], NULL, rotaciona, &t_arg);
 	}
 	for(int i = 0; i < linha; i++)//linha
 	{
@@ -58,6 +63,11 @@ int main (int argc, char* argv[]){
 			fprintf(rot,"%.2lf ",mat[i][j]);
 		}
 		fprintf(rot,"\n");
+	}
+
+	for(int i = 0; i < num_threads; i++)
+	{
+		pthread_join(tids[i], NULL);
 	}
 
 	fclose(fptr);
