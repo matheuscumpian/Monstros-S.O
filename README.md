@@ -8,7 +8,7 @@
  - Matheus Rosisca
 
 
-Esse programa tem como objetivo rotacionar uma matriz NxM em 90º no sentido horário utilizando a linguagem C. Como requisito principal o programa deve obrigatóriamente utilizar multiplas threads para fazer a rotação, com a biblioteca ***POSIX pthreads***
+Esse programa tem como objetivo rotacionar uma matriz NxM em 90º no sentido horário utilizando a linguagem C. Como requisito principal o programa deve obrigatoriamente utilizar multiplas threads para fazer a rotação, com a biblioteca ***POSIX threads***
 
 ***Exemplo***
 
