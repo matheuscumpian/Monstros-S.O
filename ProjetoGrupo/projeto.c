@@ -36,25 +36,29 @@ int main(int argc, char * argv[]) {
    int resto;
 
    int i = 0;
-
+   printf("Chegou aqui\n");
    rotacionadaaa = (double ** ) malloc(coluna * sizeof(double * ));
    for (i = 0; i < coluna; i++)
-      rotacionadaaa[i] = (double * ) malloc(linha * sizeof(double)); //struct colunaxlinha
-
-   matriz = (double ** ) malloc(linha * sizeof(double * ));
+      rotacionadaaa[i] = (double* ) malloc(linha * sizeof(double)); //struct colunaxlinha
+	printf("Chegou aqui\n");
+   matriz = (double** ) malloc(linha * sizeof(double * ));
    for (i = 0; i < linha; i++)
-      matriz[i] = (double * ) malloc(coluna * sizeof(double)); //struct linhaxcoluna
-
+      matriz[i] = (double * ) malloc(coluna * sizeof(double)); //linhaxcoluna struct
+	printf("Chegou aqui\n");
    armazena(); //roda a funcao que grava os valores do arquivo na matriz
-
+	printf("Chegou aqui\n");
    pthread_t tids[num_threads];
+   printf("Chegou aqui\n");
    thread_args arguments[num_threads];
    primeira_coluna = 0;
    int divisao = coluna / num_threads;
    resto = coluna % num_threads;
-   arguments[i].primeira_coluna = 0;
-   arguments[i].ultima_coluna = 0;
-
+   printf("Chegou aqui\n");
+   printf("%d\n", resto);
+   arguments[0].primeira_coluna = 0;
+   printf("Passou\n");
+   arguments[0].ultima_coluna = 0;
+	printf("Chegou aqui\n");
    for (int i = 0; i < num_threads; i++) //for que cria varias threadds
    {
       printf("criando thread: %d\n", i);
@@ -140,7 +144,7 @@ void * rotaciona(void * arg) {
    pthread_mutex_lock( & mutex_leitura);
    //printf(" 							bloqueou\n");
 
-   for (int contcol = struct_pointer - > primeira_coluna; contcol <= struct_pointer - > ultima_coluna; contcol++) {
+   for (int contcol = struct_pointer->primeira_coluna; contcol <= struct_pointer-> ultima_coluna; contcol++) {
       for (int contlin = 0; contlin < linha; contlin++) {
          //printf("\n ta no for da tread %d 	", struct_pointer->threadx);
 
