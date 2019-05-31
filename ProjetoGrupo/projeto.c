@@ -90,9 +90,9 @@ int main(int argc, char * argv[]) {
       printf("Terminando thread: %d\n", i);
    }
 
-   for (int i = 0; i < linha; i++) //linha
+   for (int i = 0; i < coluna; i++) //linha
    {
-      for (int j = 0; j < coluna; j++) //coluna
+      for (int j = 0; j < linha; j++) //coluna
       {
          //printf("(%d %d ) ",i,j );
          //fscanf(fptr, "%lf", &matriz[i][j]);
@@ -116,14 +116,14 @@ void armazena() //funcao que armazena na matriz os dados do arquivo
       exit(0);
    }
 
-   for (int j = 0; j < coluna; j++) //coluna
+   for (int i = 0; i < linha; i++) //coluna
    {
-      for (int i = 0; i < linha; i++) //linha
+      for (int j = 0; j < coluna; j++) //linha
       {
 
          //printf("%d %d\n", i, j);
          //pthread_mutex_trylock(&mutex_leitura);
-         fscanf(fptr, "%lf", & matriz[j][i]);
+         fscanf(fptr, "%lf", & matriz[i][j]);
          //printf("%.2lf	", matriz[j][i]);
 
          //pthread_mutex_unlock(&mutex_leitura);
