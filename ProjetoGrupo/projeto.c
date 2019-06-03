@@ -4,6 +4,9 @@
 
 #include <pthread.h>
 
+#include <sys/time.h>
+
+
 FILE * fptr; //Arquivo de Entrada
 FILE * rot; //Arquivo de Saída
 
@@ -23,6 +26,8 @@ int coluna;
 void armazena();
 void printa_rotacionada();
 void * rotaciona(void * arg);
+float tempo;
+
 
 int main(int argc, char ** argv) {
 
@@ -42,7 +47,9 @@ int main(int argc, char ** argv) {
     int num_threads = atoi(argv[3]); //numero de threads
     int resto;
     int i = 0;
+    clock_t t;
 
+ 
     if (num_threads != 2 && num_threads != 4 && num_threads != 8 && num_threads != 16) {
         printf("\nNumero de threads invalido\nTente com uma das opcoes a seguir:\n2,\t 4,\t 8,\t 16.\n");
         exit(1);
@@ -68,7 +75,8 @@ int main(int argc, char ** argv) {
     //Startando argumentos para primeira thread
     arguments[0].primeira_coluna = 0;
     arguments[0].ultima_coluna = 0;
-
+	
+    t = clock(); // começa a contar os clocks
     for (int i = 0; i < num_threads; i++) //for que cria varias threadds
     {
         printf("criando thread: %d\n", i);
@@ -102,11 +110,17 @@ int main(int argc, char ** argv) {
         pthread_join(tids[i], NULL);
         printf("Terminando thread: %d\n", i + 1);
     }
+    t = clock() - t; //diferença de clock da criação até finalização das threads
+    double time_taken = ((double)t)/CLOCKS_PER_SEC; // Tempo que se passou da criação a fianalização das threads
+
+    printf("Tempo: %f segundos\n", time_taken);
     // Ao passo que cada thread já finalizou seu trabalho podemos printar no arquivo a matriz rotacionada.
     printa_rotacionada();
 
     fclose(fptr);
     fclose(rot);
+    free(matriz);
+    free(rotacionada);
     return (0);
 }
 
