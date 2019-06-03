@@ -22,7 +22,8 @@ Esse programa tem como objetivo rotacionar uma matriz NxM em 90º no sentido hor
 
  1. Clone o repositório para seu computador
  2. Navegue até a pasta *ProjetoGrupo*
- 3. Rode o script de compilação com o comando `./run.sh`
- 4. Observe as intruções de execução com o comando `./giramatriz
+ 3. Dê permissão para execução do script com o comando  `chmod a+x run.sh`
+ 4. Rode o script de compilação com o comando `./run.sh`
+ 5. Observe as intruções de execução com o comando `./giramatriz
 `
  
