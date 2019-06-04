@@ -10,7 +10,7 @@
 FILE * fptr; //Arquivo de Entrada
 FILE * rot; //Arquivo de Saída
 
-pthread_mutex_t mutex_leitura = PTHREAD_MUTEX_INITIALIZER; // Mutex para leitura
+
 
 typedef struct arg {
     int primeira_coluna; // Primeira coluna que a thread ira rotacionar
@@ -148,13 +148,12 @@ void * rotaciona(void * arg) {
 
     struct arg * struct_pointer = (struct arg * ) arg; // Coerção do argumento tipo void para o tipo da struct argumentos
 
-    //pthread_mutex_lock( & mutex_leitura); // Lock de mutex pra ler
+    
 
     for (int contcol = struct_pointer -> primeira_coluna; contcol <= struct_pointer -> ultima_coluna; contcol++) {
         for (int contlin = 0; contlin < linha; contlin++) {
 
-            //fscanf(fptr, "%lf", & matriz[contlin][contcol]); // le dado da matriz
-
+           
             int novalinha, novacoluna;
 
             novalinha = contcol; //Nova linha = coluna atual
@@ -167,7 +166,7 @@ void * rotaciona(void * arg) {
         }
 
     }
-    //pthread_mutex_unlock( & mutex_leitura); //Unlock no mutex quando tiver lido e gravado
+   
 
     pthread_exit(0);
 
