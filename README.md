@@ -29,3 +29,5 @@ Esse programa tem como objetivo rotacionar uma matriz NxM em 90º no sentido hor
 
 
 **EM ALGUMAS DISTRIBUIÇÕES LINUX O PROGRAMA NÃO IRÁ COMPILAR COM O SCRIPT, O QUE DEVERÁ SER FEITO É ABRIR O RUN.SH EM UM EDITOR DE TEXTO E TROCAR O -PTHREAD POR -LPTHREAD**
+
+> Para assistir o vídeo da execução do programa [clique aqui](https://youtu.be/KSxqcRow4FY)
