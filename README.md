@@ -26,4 +26,4 @@ Esse programa tem como objetivo rotacionar uma matriz NxM em 90º no sentido hor
  4. Rode o script de compilação com o comando `./run.sh`
  5. Observe as intruções de execução com o comando `./giramatriz
 `
- 
+ **EM ALGUMAS DISTRIBUIÇÕES LINUX O PROGRAMA NÃO IRÁ COMPILAR COM O SCRIPT, O QUE DEVERÁ SER FEITO É ABRIR O RUN.SH EM UM EDITOR DE TEXTO E TROCAR O -PTHREAD POR -LPTHREAD**
